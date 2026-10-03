@@ -1,0 +1,126 @@
+/* Palette Volta */
+:root {
+  --bgcolor-principale: #0a0a0b;
+  --bg-card: #161618;
+  --rosa-neon: #ff3e6c;
+  --verde-neon: #00e8c6;
+  --giallo-neon: #ffe03a;
+  --testo-vario: #b0b0b0;
+  --font-titoli: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* Variabili di Bootstrap (tema scuro) */
+[data-bs-theme='dark'] {
+  --bs-body-bg: var(--bgcolor-principale);
+  --bs-body-color: #ffffff;
+  --bs-body-font-family: var(--font-body);
+  --bs-secondary-color: var(--testo-vario);
+  --bs-danger: #ff3e6c;
+  --bs-danger-rgb: 255, 62, 108;
+  --bs-info: #00e8c6;
+  --bs-info-rgb: 0, 232, 198;
+}
+
+/* Titoli */
+h1,
+h2,
+h3,
+h4,
+h5,
+.navbar-brand {
+  font-family: var(--font-titoli);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+h1 {
+  color: var(--verde-neon);
+  font-size: 3rem;
+}
+
+h2,
+h3 {
+  color: var(--rosa-neon);
+}
+
+::selection {
+  background-color: var(--verde-neon);
+  color: #000;
+}
+
+/* Navbar */
+.volta-navbar {
+  background-color: var(--bgcolor-principale);
+  border-bottom: 2px solid var(--verde-neon);
+}
+
+.volta-navbar .navbar-brand {
+  color: var(--verde-neon);
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.volta-navbar .nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-bottom: 3px solid transparent;
+}
+
+.volta-navbar .nav-link:hover,
+.volta-navbar .nav-link.active {
+  color: var(--rosa-neon);
+  border-bottom-color: var(--rosa-neon);
+}
+
+/* Card */
+.card {
+  --bs-card-bg: var(--bg-card);
+  --bs-card-border-color: #333333;
+  --bs-card-cap-bg: var(--bg-card);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: var(--verde-neon);
+  box-shadow: 0 0 20px rgba(0, 232, 198, 0.2);
+}
+
+/* Pulsante verde neon (sostituisce btn-outline-info) */
+.btn-outline-info {
+  --bs-btn-color: var(--verde-neon);
+  --bs-btn-border-color: var(--verde-neon);
+  --bs-btn-hover-bg: var(--verde-neon);
+  --bs-btn-hover-border-color: var(--verde-neon);
+  --bs-btn-hover-color: #000000;
+  --bs-btn-active-bg: var(--verde-neon);
+  --bs-btn-active-border-color: var(--verde-neon);
+  --bs-btn-active-color: #000000;
+  font-family: var(--font-titoli);
+  letter-spacing: 1px;
+}
+
+/* Form */
+.form-control,
+.form-select {
+  background-color: #222222;
+  border-color: #444444;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #222222;
+  border-color: var(--verde-neon);
+  box-shadow: 0 0 0 0.2rem rgba(0, 232, 198, 0.25);
+}
+
+/* Footer */
+.volta-footer {
+  background-color: var(--rosa-neon);
+  color: #000000;
+  font-weight: 700;
+}

@@ -20,40 +20,48 @@ export default {
 </script>
 
 <template>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
-        <RouterLink class="navbar-brand" to="/" @click="menuAperto = false">
-          VOLTA RECORDS
-        </RouterLink>
+  <div class="d-flex flex-column min-vh-100">
+    <header>
+      <nav class="navbar navbar-expand-lg sticky-top volta-navbar" data-bs-theme="dark">
+        <div class="container">
+          <RouterLink class="navbar-brand" to="/" @click="menuAperto = false">
+            VOLTA RECORDS
+          </RouterLink>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          aria-label="Apri o chiudi il menu"
-          :aria-expanded="menuAperto"
-          @click="menuAperto = !menuAperto"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            aria-label="Apri o chiudi il menu"
+            :aria-expanded="menuAperto"
+            @click="menuAperto = !menuAperto"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" :class="{ show: menuAperto }">
-          <ul class="navbar-nav ms-auto">
-            <li v-for="voce in voci" :key="voce.percorso" class="nav-item">
-              <RouterLink
-                class="nav-link"
-                :to="voce.percorso"
-                exact-active-class="active"
-                @click="menuAperto = false"
-              >
-                {{ voce.testo }}
-              </RouterLink>
-            </li>
-          </ul>
+          <div class="collapse navbar-collapse" :class="{ show: menuAperto }">
+            <ul class="navbar-nav ms-auto">
+              <li v-for="voce in voci" :key="voce.percorso" class="nav-item">
+                <RouterLink
+                  class="nav-link"
+                  :to="voce.percorso"
+                  exact-active-class="active"
+                  @click="menuAperto = false"
+                >
+                  {{ voce.testo }}
+                </RouterLink>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <RouterView />
+    <main class="flex-grow-1">
+      <RouterView />
+    </main>
+
+    <footer class="volta-footer text-center py-3">
+      <p class="mb-0">&copy; 2026 VOLTA RECORDS - Torino Digital Sound</p>
+    </footer>
+  </div>
 </template>
