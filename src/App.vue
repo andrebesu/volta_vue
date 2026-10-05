@@ -65,4 +65,3 @@ export default {
     </footer>
   </div>
 </template>
-adsf
