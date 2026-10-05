@@ -21,6 +21,12 @@ const router = createRouter({
     // redirect: chi arriva su /band viene mandato su /artisti (e l'URL cambia)
     { path: '/band', redirect: '/artisti' },
 
+    {
+      path: '/servizi',
+      name: 'servizi',
+      component: () => import('../views/ServiziView.vue'),
+    },
+
     // catch-all: raccoglie tutti i percorsi senza corrispondenza
     { path: '/:catchAll(.*)', name: 'not-found', component: NotFoundView },
   ],
