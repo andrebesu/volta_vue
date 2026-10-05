@@ -124,3 +124,31 @@ h3 {
   color: #000000;
   font-weight: 700;
 }
+
+/* Box laterale (aside) */
+.volta-aside {
+  background-color: var(--bg-card);
+  border-left: 4px solid var(--giallo-neon);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+/* Date e luoghi degli eventi */
+.volta-data {
+  font-family: var(--font-titoli);
+  color: var(--verde-neon);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Giallo neon al posto del giallo di Bootstrap */
+[data-bs-theme='dark'] {
+  --bs-warning: #ffe03a;
+  --bs-warning-rgb: 255, 224, 58;
+}
+
+/* Eventi passati */
+.evento-passato {
+  opacity: 0.5;
+  filter: grayscale(1);
+}

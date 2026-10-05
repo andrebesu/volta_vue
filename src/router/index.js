@@ -27,6 +27,12 @@ const router = createRouter({
       component: () => import('../views/ServiziView.vue'),
     },
 
+    {
+      path: '/news',
+      name: 'news',
+      component: () => import('../views/NewsView.vue'),
+    },
+
     // catch-all: raccoglie tutti i percorsi senza corrispondenza
     { path: '/:catchAll(.*)', name: 'not-found', component: NotFoundView },
   ],
