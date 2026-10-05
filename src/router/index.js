@@ -33,6 +33,30 @@ const router = createRouter({
       component: () => import('../views/NewsView.vue'),
     },
 
+    {
+      path: '/booking',
+      name: 'booking',
+      component: () => import('../views/BookingView.vue'),
+    },
+
+    {
+      path: '/demo',
+      name: 'demo',
+      component: () => import('../views/DemoView.vue'),
+    },
+
+    {
+      path: '/chi-siamo',
+      name: 'chi-siamo',
+      component: () => import('../views/ChiSiamoView.vue'),
+    },
+
+    {
+      path: '/contatti',
+      name: 'contatti',
+      component: () => import('../views/ContattiView.vue'),
+    },
+
     // catch-all: raccoglie tutti i percorsi senza corrispondenza
     { path: '/:catchAll(.*)', name: 'not-found', component: NotFoundView },
   ],

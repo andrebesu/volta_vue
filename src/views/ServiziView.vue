@@ -40,10 +40,14 @@ export default {
       this.servizioScelto = servizio
       this.modale.show()
     },
+
     vaiAlBooking() {
-      this.$refs.modale.addEventListener('hidden.bs.modal', () => this.$router.push('/booking'), {
-        once: true,
-      })
+      const id = this.servizioScelto.id
+      this.$refs.modale.addEventListener(
+        'hidden.bs.modal',
+        () => this.$router.push({ path: '/booking', query: { servizio: id } }),
+        { once: true },
+      )
       this.modale.hide()
     },
   },
