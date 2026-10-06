@@ -9,9 +9,6 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
 
-    // caricata solo quando serve (lazy loading), come faceva già il wizard
-    { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
-
     // alias: /roster mostra la stessa pagina, ma l'URL resta /roster
     { path: '/artisti', name: 'artisti', component: ArtistiView, alias: '/roster' },
 
