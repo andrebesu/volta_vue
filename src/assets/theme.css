@@ -37,7 +37,7 @@ h5,
 
 h1 {
   color: var(--verde-neon);
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 h2,
@@ -165,4 +165,21 @@ h3 {
   justify-content: center;
   font-family: var(--font-titoli);
   font-size: 1.1rem;
+}
+
+/* Mobile-first: dalla base (telefono) si aggiunge man mano */
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .volta-aside {
+    padding: 2rem;
+  }
 }

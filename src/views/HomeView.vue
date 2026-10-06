@@ -44,8 +44,8 @@ export default {
         </div>
 
         <aside class="col-12 col-lg-3">
-          <div class="volta-aside">
-            <h3>Prossimi Live</h3>
+          <AsideBox>
+            <template #titolo>Prossimi Live</template>
             <ul class="list-unstyled mb-0">
               <li v-for="e in prossimi" :key="e.id" class="mb-3">
                 <span class="volta-data">{{ e.data }} - {{ e.luogo }}</span>
@@ -54,7 +54,7 @@ export default {
                 <p class="text-body-secondary small mb-0">{{ e.descrizione }}</p>
               </li>
             </ul>
-          </div>
+          </AsideBox>
         </aside>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import { useArtistiStore } from '../stores/artisti'
 import CardArtista from '../components/CardArtista.vue'
 
@@ -13,7 +13,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(useArtistiStore, ['artisti']),
+    ...mapState(useArtistiStore, ['artisti', 'preferiti']),
     generi() {
       return [...new Set(this.artisti.map((a) => a.genere))]
     },
@@ -25,8 +25,37 @@ export default {
         return nomeOk && genereOk
       })
     },
+    numeroRisultati() {
+      return this.artistiFiltrati.length
+    },
+    nessunFiltro() {
+      return this.ricerca === '' && this.genereScelto === ''
+    },
+  },
+  watch: {
+    // immediate: parte subito alla creazione, non solo al primo cambiamento
+    numeroRisultati: {
+      handler(n) {
+        document.title = `VOLTA RECORDS | Artisti (${n})`
+      },
+      immediate: true,
+    },
+    // deep: osserva anche le modifiche interne all'array
+    preferiti: {
+      handler(nuovi) {
+        console.log('Preferiti aggiornati:', nuovi.length)
+      },
+      deep: true,
+    },
+  },
+  updated() {
+    console.log('ArtistiView ri-renderizzata')
+  },
+  unmounted() {
+    document.title = 'VOLTA RECORDS'
   },
   methods: {
+    ...mapActions(useArtistiStore, ['togglePreferito']),
     azzeraFiltri() {
       this.ricerca = ''
       this.genereScelto = ''
@@ -56,15 +85,30 @@ export default {
         </select>
       </div>
       <div class="col-4 col-md-2">
-        <button class="btn btn-outline-secondary w-100" @click="azzeraFiltri">Azzera</button>
+        <button
+          class="btn btn-outline-secondary w-100"
+          :disabled="nessunFiltro"
+          @click="azzeraFiltri"
+        >
+          Azzera
+        </button>
       </div>
     </div>
 
-    <p class="text-body-secondary">{{ artistiFiltrati.length }} risultati</p>
+    <p class="text-body-secondary">
+      {{ numeroRisultati }} risultati
+      <span v-show="preferiti.length" class="badge text-bg-danger ms-2">
+        ♥ {{ preferiti.length }} preferiti
+      </span>
+    </p>
 
-    <div v-if="artistiFiltrati.length" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <div v-if="numeroRisultati" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
       <div v-for="a in artistiFiltrati" :key="a.id" class="col">
-        <CardArtista :artista="a" />
+        <CardArtista
+          :artista="a"
+          :preferito="preferiti.includes(a.id)"
+          @toggle-preferito="togglePreferito"
+        />
       </div>
     </div>
     <p v-else class="text-center my-5">Nessun artista corrisponde alla ricerca.</p>

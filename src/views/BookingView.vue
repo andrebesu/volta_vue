@@ -19,6 +19,7 @@ export default {
       form: formVuoto(),
       tentato: false,
       confermato: '',
+      bozza: false,
     }
   },
   computed: {
@@ -28,6 +29,14 @@ export default {
       const adesso = new Date()
       adesso.setMinutes(adesso.getMinutes() - adesso.getTimezoneOffset())
       return adesso.toISOString().slice(0, 16)
+    },
+    watch: {
+      form: {
+        handler(f) {
+          this.bozza = Boolean(f.artista || f.email || f.note)
+        },
+        deep: true,
+      },
     },
     errori() {
       const e = {}
@@ -173,6 +182,8 @@ export default {
             </div>
           </div>
         </form>
+
+        <p v-if="bozza" class="small text-warning mt-2 mb-0">Hai una bozza non ancora inviata.</p>
 
         <div v-if="confermato" class="alert alert-success mt-3" role="alert">
           {{ confermato }}

@@ -79,6 +79,7 @@ export const useArtistiStore = defineStore('artisti', {
         immagine: '/immagini/artista8.jpg',
       },
     ],
+    preferiti: [],
   }),
   getters: {
     numeroArtisti: (state) => state.artisti.length,
@@ -91,6 +92,13 @@ export const useArtistiStore = defineStore('artisti', {
     },
     rimuoviArtista(id) {
       this.artisti = this.artisti.filter((a) => a.id !== id)
+    },
+    togglePreferito(id) {
+      if (this.preferiti.includes(id)) {
+        this.preferiti = this.preferiti.filter((p) => p !== id)
+      } else {
+        this.preferiti.push(id)
+      }
     },
   },
 })

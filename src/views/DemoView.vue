@@ -26,6 +26,9 @@ export default {
     caratteriRimasti() {
       return this.maxBio - this.form.bio.length
     },
+    percentualeBio() {
+      return (this.form.bio.length / this.maxBio) * 100
+    },
     errori() {
       const e = {}
       if (this.form.nome.trim().length < 2) {
@@ -155,6 +158,14 @@ export default {
               :maxlength="maxBio"
               placeholder="Parlaci brevemente del tuo progetto..."
             ></textarea>
+            <div
+              class="progress mt-1"
+              style="height: 6px"
+              role="progressbar"
+              aria-label="Lunghezza del testo"
+            >
+              <div class="progress-bar bg-info" :style="{ width: percentualeBio + '%' }"></div>
+            </div>
             <div class="form-text" :class="{ 'text-warning': caratteriRimasti < 30 }">
               {{ caratteriRimasti }} caratteri rimasti
             </div>
