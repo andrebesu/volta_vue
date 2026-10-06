@@ -5,8 +5,8 @@ export const useTeamStore = defineStore('team', {
     fondatori: [
       {
         id: 1,
-        sigla: 'AL',
-        nome: 'Alessandra',
+        sigla: 'IL',
+        nome: 'Ilaria',
         ruolo: 'A&R / Direzione artistica',
         descrizione:
           'Cresciuta tra concerti e fanzine, porta in VOLTA uno sguardo editoriale preciso e una passione per la scoperta di nuovi talenti.',
@@ -21,19 +21,11 @@ export const useTeamStore = defineStore('team', {
       },
       {
         id: 3,
-        sigla: 'IL',
-        nome: 'Ilaria',
+        sigla: 'VA',
+        nome: 'Valeria',
         ruolo: 'Marketing & comunicazione',
         descrizione:
           'Esperta di comunicazione culturale, crede che ogni disco meriti una storia da raccontare al mondo nel modo giusto.',
-      },
-      {
-        id: 4,
-        sigla: 'SI',
-        nome: 'Silvia',
-        ruolo: 'Booking & management',
-        descrizione:
-          'Ha gestito tournée in tutta Europa. In VOLTA si occupa di portare gli artisti sui palchi giusti al momento giusto.',
       },
     ],
     testimonianze: [
