@@ -20,10 +20,10 @@ export default {
           indipendente.
         </p>
         <p class="text-body-secondary">
-          Nata da un'idea di <strong> Andrea, Ilaria e Valeria</strong>, tre amici con background
-          diversi ma uniti dalla stessa passione per il suono autentico. Ci siamo uniti con l'idea
-          di trasformare la nostra passione in un porto sicuro per chi, come noi, crede che la
-          musica abbia ancora bisogno di cura, tempo e visione.
+          Nata da un'idea di <strong>Alessandra, Andrea, Ilaria e Silvia</strong>, quattro amici con
+          background diversi ma uniti dalla stessa passione per il suono autentico. Ci siamo uniti
+          con l'idea di trasformare la nostra passione in un porto sicuro per chi, come noi, crede
+          che la musica abbia ancora bisogno di cura, tempo e visione.
         </p>
 
         <h2 class="mt-4">I fondatori</h2>
@@ -57,8 +57,8 @@ export default {
       </div>
 
       <aside class="col-12 col-lg-3">
-        <div class="volta-aside">
-          <h3>La nostra filosofia</h3>
+        <AsideBox>
+          <template #titolo>La nostra filosofia</template>
           <p class="text-body-secondary">
             In VOLTA rallentiamo. Ci prendiamo cura del talento, costruendo progetti che abbiano una
             voce fuori dal coro. La qualità dei legami prima della quantità dei click.
@@ -70,7 +70,7 @@ export default {
           >
             <h4 class="mb-0">{{ n.testo }}</h4>
           </div>
-        </div>
+        </AsideBox>
       </aside>
     </div>
   </div>

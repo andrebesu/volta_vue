@@ -4,10 +4,11 @@ import { useReleaseStore } from '../stores/release'
 import { useEventiStore } from '../stores/eventi'
 import { useNewsletterStore } from '../stores/newsletter'
 import CardEvento from '../components/CardEvento.vue'
+import CardRelease from '../components/CardRelease.vue'
 
 export default {
   name: 'NewsView',
-  components: { CardEvento },
+  components: { CardEvento, CardRelease },
   data() {
     return {
       nome: '',
@@ -47,20 +48,14 @@ export default {
 
         <div class="row row-cols-1 row-cols-sm-2 g-4">
           <div v-for="u in uscite" :key="u.id" class="col">
-            <div class="card h-100">
-              <img
-                :src="u.immagine"
-                :alt="`${u.titolo} di ${u.artista}`"
-                class="card-img-top"
-                style="height: 250px; object-fit: cover"
-                loading="lazy"
-              />
-              <div class="card-body">
-                <span class="badge text-bg-danger mb-2">FUORI ORA</span>
-                <h5 class="card-title">{{ u.titolo }}</h5>
-                <p class="card-text text-body-secondary mb-0">{{ u.artista }} - {{ u.formato }}</p>
-              </div>
-            </div>
+            <CardRelease
+              :immagine="u.immagine"
+              :alt="`${u.titolo} di ${u.artista}`"
+              :titolo="u.titolo"
+              badge="FUORI ORA"
+            >
+              {{ u.artista }} - {{ u.formato }}
+            </CardRelease>
           </div>
         </div>
 
@@ -77,8 +72,8 @@ export default {
       </div>
 
       <aside class="col-12 col-lg-4">
-        <div class="volta-aside">
-          <h3>Playlist</h3>
+        <AsideBox>
+          <template #titolo>Playlist</template>
           <p class="text-body-secondary">
             Ascolta la selezione ufficiale dei nostri artisti su Spotify.
           </p>
@@ -134,7 +129,7 @@ export default {
           >
             {{ messaggio }}
           </div>
-        </div>
+        </AsideBox>
       </aside>
     </div>
   </div>

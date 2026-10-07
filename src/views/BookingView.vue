@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'pinia'
 import { useServiziStore } from '../stores/servizi'
 import { usePrenotazioniStore } from '../stores/prenotazioni'
+import CampoForm from '../components/CampoForm.vue'
 
 const formVuoto = () => ({
   artista: '',
@@ -14,6 +15,7 @@ const formVuoto = () => ({
 
 export default {
   name: 'BookingView',
+  components: { CampoForm },
   data() {
     return {
       form: formVuoto(),
@@ -101,31 +103,28 @@ export default {
         <form novalidate @submit.prevent="invia">
           <div class="row g-3">
             <div class="col-12 col-md-6">
-              <label for="artista" class="form-label">Nome artista / band</label>
-              <input
+              <CampoForm
                 id="artista"
                 v-model="form.artista"
-                type="text"
-                class="form-control"
-                :class="{ 'is-invalid': tentato && errori.artista }"
+                label="Nome artista / band"
                 placeholder="Es. The Voltaics"
                 autocomplete="on"
+                :errore="errori.artista"
+                :mostra-errore="tentato"
               />
-              <div class="invalid-feedback">{{ errori.artista }}</div>
             </div>
 
             <div class="col-12 col-md-6">
-              <label for="email" class="form-label">Email di contatto</label>
-              <input
+              <CampoForm
                 id="email"
                 v-model="form.email"
-                type="email"
-                class="form-control"
-                :class="{ 'is-invalid': tentato && errori.email }"
+                label="Email di contatto"
+                tipo="email"
                 placeholder="tua@email.com"
                 autocomplete="on"
+                :errore="errori.email"
+                :mostra-errore="tentato"
               />
-              <div class="invalid-feedback">{{ errori.email }}</div>
             </div>
 
             <div class="col-12">
@@ -143,16 +142,15 @@ export default {
             </div>
 
             <div class="col-12 col-md-6">
-              <label for="data" class="form-label">Data preferita</label>
-              <input
+              <CampoForm
                 id="data"
                 v-model="form.data"
-                type="datetime-local"
-                class="form-control"
+                label="Data preferita"
+                tipo="datetime-local"
                 :min="dataMinima"
-                :class="{ 'is-invalid': tentato && errori.data }"
+                :errore="errori.data"
+                :mostra-errore="tentato"
               />
-              <div class="invalid-feedback">{{ errori.data }}</div>
             </div>
 
             <div class="col-12 col-md-6">
@@ -211,8 +209,8 @@ export default {
       </div>
 
       <aside class="col-12 col-lg-4">
-        <div class="volta-aside">
-          <h3>Lo studio</h3>
+        <AsideBox>
+          <template #titolo>Lo studio</template>
           <img
             src="/immagini/interno_studio.jpg"
             alt="Interno dello studio di registrazione"
@@ -226,7 +224,7 @@ export default {
             <li>✓ Area Relax / Bar</li>
             <li>✓ Parcheggio Privato</li>
           </ul>
-        </div>
+        </AsideBox>
       </aside>
     </div>
   </div>

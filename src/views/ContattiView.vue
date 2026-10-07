@@ -60,8 +60,8 @@ export default {
       </div>
 
       <aside class="col-12 col-lg-4">
-        <div class="volta-aside">
-          <h3>I nostri social</h3>
+        <AsideBox>
+          <template #titolo>I nostri social</template>
           <p class="text-body-secondary">
             Seguiteci sui nostri profili Instagram, Facebook e SoundCloud!
           </p>
@@ -73,7 +73,7 @@ export default {
               </a>
             </li>
           </ul>
-        </div>
+        </AsideBox>
       </aside>
     </div>
   </div>

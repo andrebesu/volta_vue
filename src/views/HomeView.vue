@@ -2,9 +2,11 @@
 import { mapState } from 'pinia'
 import { useReleaseStore } from '../stores/release'
 import { useEventiStore } from '../stores/eventi'
+import CardRelease from '../components/CardRelease.vue'
 
 export default {
   name: 'HomeView',
+  components: { CardRelease },
   computed: {
     ...mapState(useReleaseStore, ['release']),
     ...mapState(useEventiStore, ['prossimi']),
@@ -25,20 +27,14 @@ export default {
           <h2>Ultime Release</h2>
           <div class="row row-cols-1 row-cols-md-2 g-4">
             <div v-for="r in release" :key="r.id" class="col">
-              <div class="card h-100">
-                <img
-                  :src="r.immagine"
-                  :alt="`${r.titolo} - ${r.artista}`"
-                  class="card-img-top"
-                  style="height: 250px; object-fit: cover"
-                  loading="lazy"
-                />
-                <div class="card-body">
-                  <span class="badge text-bg-danger text-wrap mb-2">{{ r.tag }}</span>
-                  <h5 class="card-title">“{{ r.titolo }}” - {{ r.artista }}</h5>
-                  <p class="card-text text-body-secondary">{{ r.descrizione }}</p>
-                </div>
-              </div>
+              <CardRelease
+                :immagine="r.immagine"
+                :alt="`${r.titolo} - ${r.artista}`"
+                :titolo="`“${r.titolo}” - ${r.artista}`"
+                :badge="r.tag"
+              >
+                {{ r.descrizione }}
+              </CardRelease>
             </div>
           </div>
         </div>

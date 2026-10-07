@@ -1,6 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import { useDemoStore } from '../stores/demo'
+import CampoForm from '../components/CampoForm.vue'
 
 const formVuoto = () => ({
   nome: '',
@@ -12,6 +13,7 @@ const formVuoto = () => ({
 
 export default {
   name: 'DemoView',
+  components: { CampoForm },
   data() {
     return {
       form: formVuoto(),
@@ -104,32 +106,27 @@ export default {
 
         <form novalidate @submit.prevent="invia">
           <div class="mb-3">
-            <label for="nome" class="form-label">Nome reale o artistico</label>
-            <input
+            <CampoForm
               id="nome"
               v-model="form.nome"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': tentato && errori.nome }"
+              label="Nome reale o artistico"
               placeholder="Es. Volta Band"
               autofocus
+              :errore="errori.nome"
+              :mostra-errore="tentato"
             />
-            <div class="invalid-feedback">{{ errori.nome }}</div>
           </div>
 
           <div class="mb-3">
-            <label for="link" class="form-label">
-              Link alla tua musica (cartella Drive o playlist con almeno 2 demo)
-            </label>
-            <input
+            <CampoForm
               id="link"
               v-model="form.link"
-              type="url"
-              class="form-control"
-              :class="{ 'is-invalid': tentato && errori.link }"
+              label="Link alla tua musica (cartella Drive o playlist con almeno 2 demo)"
+              tipo="url"
               placeholder="https://soundcloud.com/tuonome/sets/demo"
+              :errore="errori.link"
+              :mostra-errore="tentato"
             />
-            <div class="invalid-feedback">{{ errori.link }}</div>
           </div>
 
           <div class="mb-3">
@@ -216,8 +213,8 @@ export default {
       </div>
 
       <aside class="col-12 col-lg-4">
-        <div class="volta-aside">
-          <h3>Requisiti</h3>
+        <AsideBox>
+          <template #titolo>Requisiti</template>
           <img
             src="/immagini/studio2.jpg"
             alt="Studio di registrazione"
@@ -232,7 +229,7 @@ export default {
             <li>Almeno 2 demo complete</li>
             <li>No cover, solo originali</li>
           </ul>
-        </div>
+        </AsideBox>
       </aside>
     </div>
   </div>
