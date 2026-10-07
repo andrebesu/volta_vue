@@ -30,14 +30,6 @@ export default {
       adesso.setMinutes(adesso.getMinutes() - adesso.getTimezoneOffset())
       return adesso.toISOString().slice(0, 16)
     },
-    watch: {
-      form: {
-        handler(f) {
-          this.bozza = Boolean(f.artista || f.email || f.note)
-        },
-        deep: true,
-      },
-    },
     errori() {
       const e = {}
       if (this.form.artista.trim().length < 2) {
@@ -55,6 +47,14 @@ export default {
         e.data = 'La data non può essere nel passato.'
       }
       return e
+    },
+  },
+  watch: {
+    form: {
+      handler(f) {
+        this.bozza = Boolean(f.artista || f.email || f.note)
+      },
+      deep: true,
     },
   },
   created() {
