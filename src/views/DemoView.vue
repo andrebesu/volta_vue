@@ -167,7 +167,11 @@ export default {
               <div class="progress-bar bg-info" :style="{ width: percentualeBio + '%' }"></div>
             </div>
             <div class="form-text" :class="{ 'text-warning': caratteriRimasti < 30 }">
-              {{ caratteriRimasti }} caratteri rimasti
+              <span v-if="caratteriRimasti === 0">Hai raggiunto il limite di caratteri</span>
+              <span v-else-if="caratteriRimasti < 30"
+                >Attenzione: restano {{ caratteriRimasti }} caratteri</span
+              >
+              <span v-else>{{ caratteriRimasti }} caratteri rimasti</span>
             </div>
           </div>
 
