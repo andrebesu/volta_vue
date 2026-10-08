@@ -5,7 +5,7 @@ export const useEventiStore = defineStore('eventi', {
     eventi: [
       {
         id: 1,
-        data: '12/05',
+        data: '12/11',
         luogo: 'Spazio211',
         titolo: 'Vetro Freddo + ospiti',
         descrizione:
@@ -14,7 +14,7 @@ export const useEventiStore = defineStore('eventi', {
       },
       {
         id: 2,
-        data: '18/05',
+        data: '18/11',
         luogo: 'Blah Blah',
         titolo: 'Milo T (Release Party)',
         descrizione:
@@ -23,7 +23,7 @@ export const useEventiStore = defineStore('eventi', {
       },
       {
         id: 3,
-        data: '25/05',
+        data: '25/11',
         luogo: 'Hiroshima Mon Amour',
         titolo: 'Atlante Minore',
         descrizione: 'Un set immersivo con visual e nuove produzioni in anteprima.',
@@ -31,7 +31,7 @@ export const useEventiStore = defineStore('eventi', {
       },
       {
         id: 4,
-        data: '02/06',
+        data: '02/12',
         luogo: 'Capodoglio Murazzi',
         titolo: 'Camera 17 + DJ set',
         descrizione:
